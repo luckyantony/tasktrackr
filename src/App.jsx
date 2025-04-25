@@ -36,15 +36,18 @@ function App() {
   return (
     <div className="container">
       <h1 className="title">📝 TaskTrackr</h1>
-      <div className="input-group">
+      <form className="input-group" onSubmit={(e) => {
+        e.preventDefault();
+        addTask();
+      }}>
         <input
           type="text"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
           placeholder="Add a new task"
         />
-        <button onClick={addTask}>Add</button>
-      </div>
+        <button type="submit">Add</button>
+      </form>
       <ul className="task-list">
         {tasks.map(task => (
           <TaskItem
