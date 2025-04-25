@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TaskItem from './components/TaskItem';
-
-import './App.css'
+import './index.css';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -33,6 +32,7 @@ function App() {
       task.id === id ? { ...task, text: newText, isEditing: false } : task
     ));
   };
+
   return (
     <div className="container">
       <h1 className="title">📝 TaskTrackr</h1>

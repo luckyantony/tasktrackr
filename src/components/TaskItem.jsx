@@ -13,7 +13,7 @@ function TaskItem({ task, deleteTask, toggleEdit, updateTask }) {
           />
           <button onClick={() => updateTask(task.id, editText)}>Save</button>
         </>
-      ) :(
+      ) : (
         <>
           <span>{task.text}</span>
           <div className="buttons">
