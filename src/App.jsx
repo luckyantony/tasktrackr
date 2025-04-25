@@ -4,8 +4,35 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState('');
 
+  const addTask = () => {
+    if (newTask.trim() === '') return;
+    const task = {
+      id: Date.now(),
+      text: newTask,
+      isEditing: false,
+    };
+    setTasks([task, ...tasks]);
+    setNewTask('');
+  };
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  };
+
+  const toggleEdit = (id) => {
+    setTasks(tasks.map(task =>
+      task.id === id ? { ...task, isEditing: !task.isEditing } : task
+    ));
+  };
+
+  const updateTask = (id, newText) => {
+    setTasks(tasks.map(task =>
+      task.id === id ? { ...task, text: newText, isEditing: false } : task
+    ));
+  };
   return (
     <>
       <div>
